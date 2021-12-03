@@ -8,11 +8,13 @@ const styles = {
     display: 'inline-block',
     textDecoration: 'none',
     padding: 12,
+    fontSize: 24,
     fontWeight: 700,
     color: '#2A363B',
   },
   activeLink: {
-    color: '#E84A5F',
+    fontSize: 24,
+    color: '#0d6efd',
   },
 };
 
@@ -22,10 +24,10 @@ const Navigation = () => {
   return (
     <nav>
       <NavLink 
-      to="/"  
-      style={(navData) => navData.isActive ? styles.activeLink : styles.link}
+        to="/"  
+        style={(navData) => navData.isActive ? styles.activeLink : styles.link}
       >
-        Главная
+        Home
       </NavLink>
 
       {isLoggedIn && (
@@ -33,7 +35,7 @@ const Navigation = () => {
           to="/contacts"
           style={(navData) => navData.isActive ? styles.activeLink : styles.link}
         >
-          Контакты
+          Contacts
         </NavLink>
       )}
     </nav>

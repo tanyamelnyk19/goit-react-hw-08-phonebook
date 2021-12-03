@@ -6,11 +6,13 @@ const styles = {
     display: 'inline-block',
     textDecoration: 'none',
     padding: 12,
+    fontSize: 24,
     fontWeight: 700,
     color: '#2A363B',
   },
   activeLink: {
-    color: '#E84A5F',
+    fontSize: 24,
+    color: '#0d6efd',
   },
 };
 
@@ -19,19 +21,15 @@ export default function AuthNav() {
     <div>
       <NavLink
         to="/register"
-        // exact
         style={(navData) => navData.isActive ? styles.activeLink : styles.link}
-        // activeStyle={styles.activeLink}
       >
-        Регистрация
+        Registration
       </NavLink>
       <NavLink
         to="/login"
-        // exact
         style={(navData) => navData.isActive ? styles.activeLink : styles.link}
-        // activeStyle={styles.activeLink}
       >
-        Логин
+        Login
       </NavLink>
     </div>
   );

@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import contactsReducer from './contacts/reducers';
-import logger from 'redux-logger';
+// import logger from 'redux-logger';
 import { 
     persistStore, 
     persistReducer, 

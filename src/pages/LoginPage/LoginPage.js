@@ -1,17 +1,10 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { authOperations } from '../../redux/auth';
-
-const styles = {
-  form: {
-    width: 320,
-  },
-  label: {
-    display: 'flex',
-    flexDirection: 'column',
-    marginBottom: 15,
-  },
-};
+import Container from '../../../node_modules/react-bootstrap/Container';
+import Form from '../../../node_modules/react-bootstrap/Form';
+import Button  from '../../../node_modules/react-bootstrap/Button';
+import './LoginPage.css';
 
 export default function LoginPage() {
   const dispatch = useDispatch();
@@ -37,32 +30,50 @@ export default function LoginPage() {
   };
 
   return (
-    <div>
-      <h1>Страница логина</h1>
+    <Container id="main-container" className="d-grid h-100">
+      <Form 
+        onSubmit={handleSubmit} 
+        autoComplete="off"
+        id="sign-in-form" 
+        className="text-center p-3 w-100"
+      >
+        <h1 className="mb-3 fs-3 fw-normal">Please Sign in</h1>
 
-      <form onSubmit={handleSubmit} style={styles.form} autoComplete="off">
-        <label style={styles.label}>
-          Почта
-          <input
-            type="email"
-            name="email"
+        <Form.Group controlId="sign-in-email-address">
+          <Form.Control
+            name="email" 
             value={email}
             onChange={handleChange}
+            type="email" 
+            size="lg" 
+            placeholder="Email address" 
+            autoComplete="username" 
+            className="position-relative" 
           />
-        </label>
+      </Form.Group>
 
-        <label style={styles.label}>
-          Пароль
-          <input
-            type="password"
+      <Form.Group className="mb-3" controlId="sign-in-password">
+          <Form.Control 
+            type="password" 
             name="password"
             value={password}
             onChange={handleChange}
+            minLength = "8"
+            size="lg" 
+            placeholder="Password" 
+            autoComplete="current-password" 
+            className="position-relative" 
           />
-        </label>
+        </Form.Group>
 
-        <button type="submit">Войти</button>
-      </form>
-    </div>
+        <Form.Group className="d-flex justify-content-center mb-4" controlId="remember-me">
+          <Form.Check label="Remember me" />
+        </Form.Group>
+
+        <div className="d-grid">
+          <Button type="submit" variant="primary" size="lg">Sign in</Button>
+        </div>
+      </Form>
+    </Container>
   );
 }

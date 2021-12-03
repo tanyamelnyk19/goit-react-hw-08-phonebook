@@ -1,17 +1,10 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { authOperations } from '../../redux/auth';
-
-const styles = {
-  form: {
-    width: 320,
-  },
-  label: {
-    display: 'flex',
-    flexDirection: 'column',
-    marginBottom: 15,
-  },
-};
+import { authOperations } from 'redux/auth';
+import Container from '../../../node_modules/react-bootstrap/Container';
+import Form from '../../../node_modules/react-bootstrap/Form';
+import Button  from '../../../node_modules/react-bootstrap/Button';
+import './RegisterPage.css';
 
 export default function RegisterPage() {
   const dispatch = useDispatch();
@@ -41,37 +34,59 @@ export default function RegisterPage() {
   };
 
   return (
-    <div>
-      <h1>Страница регистрации</h1>
+    <Container id="main-container" className="d-grid h-100">
+      <Form 
+        onSubmit={handleSubmit} 
+        autoComplete="off"
+        id="sign-in-form" 
+        className="text-center p-3 w-100"
+      >
+        <h1 className="mb-3 fs-3 fw-normal">Sign up for Phonebook</h1>
 
-      <form onSubmit={handleSubmit} style={styles.form} autoComplete="off">
-        <label style={styles.label}>
-          Имя
-          <input type="text" name="name" value={name} onChange={handleChange} />
-        </label>
+        <Form.Group controlId="sign-in-email-user-name">
+          <Form.Control
+            type="text" 
+            name="name" 
+            value={name}
+            onChange={handleChange}
+            size="lg" 
+            placeholder="User Name" 
+            autoComplete="username" 
+            className="position-relative" 
+          />
+      </Form.Group>
 
-        <label style={styles.label}>
-          Почта
-          <input
-            type="email"
-            name="email"
+        <Form.Group controlId="sign-in-email-address">
+          <Form.Control
+            name="email" 
             value={email}
             onChange={handleChange}
+            type="email" 
+            size="lg" 
+            placeholder="Email address" 
+            autoComplete="username" 
+            className="position-relative" 
           />
-        </label>
+      </Form.Group>
 
-        <label style={styles.label}>
-          Пароль
-          <input
-            type="password"
+        <Form.Group className="mb-3" controlId="sign-in-password">
+          <Form.Control 
+            type="password" 
             name="password"
             value={password}
             onChange={handleChange}
+            minLength = "8"
+            size="lg" 
+            placeholder="Password" 
+            autoComplete="current-password" 
+            className="position-relative" 
           />
-        </label>
+        </Form.Group>
 
-        <button type="submit">Зарегистрироваться</button>
-      </form>
-    </div>
+        <div className="d-grid">
+          <Button variant="primary" size="lg" type="submit">Register</Button>
+        </div>
+      </Form>
+    </Container>
   );
 }

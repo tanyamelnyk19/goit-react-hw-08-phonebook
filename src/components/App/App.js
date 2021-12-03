@@ -38,7 +38,7 @@ export default function App() {
   return (
     <>
       {isFetchingCurrentUser ? (
-        <h1>Показываем React Skeleton</h1>
+        <MyLoader />
       ) : (
       <div className="App">
         <AppBar />
